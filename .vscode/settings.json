@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "tuple": "c",
+    "utility": "c",
+    "initializer_list": "c",
+    "type_traits": "c",
+    "xstring": "c",
+    "xutility": "c",
+    "string": "cpp",
+    "chrono": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
+}
