@@ -11,18 +11,13 @@ void print_strings(string *strings, int amount, int no_of_strings);
 
 int main(){
     string data;
-    int no_of_strings=0;
+    int no_of_strings=5757;
     int i = 0;
 
 
-    ifstream file("cpt316-assignment-2-strings.txt");
+    ifstream file("cpt316-assignment-2-strings.txt", ios::in);
 
-    while (getline(file, data))
-        no_of_strings++;
-
-    file.clear();
-    file.seekg(0);
-    string *strings = new string[no_of_strings];
+    string strings[no_of_strings]; 
 
     
     while(getline(file, data)){
@@ -38,11 +33,11 @@ int main(){
     cout << duration.count() << endl;
     print_strings(strings, 10, no_of_strings);
     
-    free(strings);
+    return 0;
 }
 
 
-void bubble_sort(string *strings, int length_of_arr){
+void bubble_sort(string strings[], int length_of_arr){
     string temp;
     
     for (int i = 0; i < length_of_arr; i++)
@@ -59,7 +54,7 @@ void bubble_sort(string *strings, int length_of_arr){
     }
 }
 
-void print_strings(string *strings, int amount, int no_of_strings){
+void print_strings(string strings[], int amount, int no_of_strings){
     if (amount > no_of_strings){
         amount = no_of_strings;
     }
