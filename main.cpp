@@ -6,7 +6,7 @@
 using namespace std::chrono;
 using namespace std;
 
-void bubble_sort(string *strings, int length_of_arr);
+void odd_even_sort(string *strings, int length_of_arr);
 void print_strings(string *strings, int amount, int no_of_strings);
 
 int main(){
@@ -31,7 +31,7 @@ int main(){
     }
 
     auto start = high_resolution_clock::now();
-    bubble_sort(strings, no_of_strings);
+    odd_even_sort(strings, no_of_strings);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
 
@@ -42,7 +42,7 @@ int main(){
 }
 
 
-void bubble_sort(string *strings, int length_of_arr){
+void odd_even_sort(string *strings, int length_of_arr){
     string temp;
 
     bool is_sorted = false;
