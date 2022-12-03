@@ -45,16 +45,22 @@ int main(){
 void bubble_sort(string *strings, int length_of_arr){
     string temp;
     
-    for (int i = 0; i < length_of_arr; i++)
+    for (int i = 0; i < length_of_arr-2; i+=2)
     {
-        for (int j = 1; j < length_of_arr-i; j++)
+        if (strings[i+1].compare(strings[i]) < 0)
         {
-            if (strings[j].compare(strings[j-1]) < 0)
-            {
-                temp = strings[j];
-                strings[j] = strings[j-1];
-                strings[j-1] = temp;
-            }
+            temp = strings[i];
+            strings[i] = strings[i+1];
+            strings[i+1] = temp;
+        }
+    }
+    for (int i = 1; i < length_of_arr-2; i+=2)
+    {
+        if (strings[i+1].compare(strings[i]) < 0)
+        {
+            temp = strings[i];
+            strings[i] = strings[i+1];
+            strings[i+1] = temp;
         }
     }
 }
