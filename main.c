@@ -12,6 +12,7 @@ void odd_even_sort(char **strings, int no_of_strings){
     {
         is_sorted = true;
 
+        // this loop is for even indexed elements
         for (int i = 0; i < no_of_strings-2; i+=2)
         {
             if(strcmp(strings[i], strings[i+1]) > 0){
@@ -21,6 +22,8 @@ void odd_even_sort(char **strings, int no_of_strings){
                 is_sorted = false;
             }  
         }
+
+        // this loop is for odd indexed elements
         for (int i = 1; i < no_of_strings-2; i+=2)
         {
             if(strcmp(strings[i], strings[i+1]) > 0){
