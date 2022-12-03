@@ -44,25 +44,35 @@ int main(){
 
 void bubble_sort(string *strings, int length_of_arr){
     string temp;
+
+    bool is_sorted = false;
+
+    while (!is_sorted)
+    {
+        is_sorted = true;
+
+        for (int i = 0; i < length_of_arr-2; i+=2)
+        {
+            if (strings[i+1].compare(strings[i]) < 0)
+            {
+                temp = strings[i];
+                strings[i] = strings[i+1];
+                strings[i+1] = temp;
+                is_sorted = false;
+            }
+        }
+        for (int i = 1; i < length_of_arr-2; i+=2)
+        {
+            if (strings[i+1].compare(strings[i]) < 0)
+            {
+                temp = strings[i];
+                strings[i] = strings[i+1];
+                strings[i+1] = temp;
+                is_sorted = false;
+            }
+        }
+    }
     
-    for (int i = 0; i < length_of_arr-2; i+=2)
-    {
-        if (strings[i+1].compare(strings[i]) < 0)
-        {
-            temp = strings[i];
-            strings[i] = strings[i+1];
-            strings[i+1] = temp;
-        }
-    }
-    for (int i = 1; i < length_of_arr-2; i+=2)
-    {
-        if (strings[i+1].compare(strings[i]) < 0)
-        {
-            temp = strings[i];
-            strings[i] = strings[i+1];
-            strings[i+1] = temp;
-        }
-    }
 }
 
 void print_strings(string *strings, int amount, int no_of_strings){
