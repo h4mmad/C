@@ -35,7 +35,7 @@ int main(){
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
 
-    cout << duration.count() << endl;
+    cout << "time taken for odd even sort in C++ is " << duration.count() << " milliseconds"<< endl;
     print_strings(strings, 10, no_of_strings);
     
     free(strings);
