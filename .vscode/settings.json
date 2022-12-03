@@ -7,7 +7,8 @@
     "xstring": "c",
     "xutility": "c",
     "string": "cpp",
-    "chrono": "cpp"
+    "chrono": "cpp",
+    "stdio.h": "c"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }

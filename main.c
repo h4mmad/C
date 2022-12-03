@@ -1,22 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #define BUFER_SIZE 4096
 
-void bubble_sort(char **strings, int no_of_strings){
+void odd_even_sort(char **strings, int no_of_strings){
     char* temp;
-    for (int i = 0; i < no_of_strings; i++)
+    bool is_sorted = false;
+
+    while (!is_sorted)
     {
-        for (int j = 1; j < no_of_strings-i; j++)
+        is_sorted = true;
+
+        for (int i = 0; i < no_of_strings-2; i+=2)
         {
-            int flag = strcmp(strings[j-1], strings[j]);
-            if(flag > 0){
-                temp = strings[j];
-                strings[j] = strings[j-1];
-                strings[j-1] = temp; 
+            if(strcmp(strings[i], strings[i+1]) > 0){
+                temp = strings[i];
+                strings[i] = strings[i+1];
+                strings[i+1] = temp; 
+                is_sorted = false;
             }  
         }
+        for (int i = 1; i < no_of_strings-2; i+=2)
+        {
+            if(strcmp(strings[i], strings[i+1]) > 0){
+                temp = strings[i];
+                strings[i] = strings[i+1];
+                strings[i+1] = temp; 
+                is_sorted = false;
+            }  
+        }
+        
     }
+
 }
 
 int main(){
@@ -58,7 +74,7 @@ int main(){
     }
 
 
-    bubble_sort(strings, no_of_strings);    
+    odd_even_sort(strings, no_of_strings);    
 
     for (int i = 0; i < 10; i++)
     {
