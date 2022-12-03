@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <stdbool.h>
 #define BUFER_SIZE 4096
 
@@ -76,8 +77,13 @@ int main(){
         }
     }
 
+    clock_t t = clock();
 
-    odd_even_sort(strings, no_of_strings);    
+    odd_even_sort(strings, no_of_strings);   
+
+    t = clock() - t;
+    double time_taken = ((double)t)/CLOCKS_PER_SEC;
+    printf("odd even sort took %f milliseconds to execute \n", time_taken*1000);
 
     for (int i = 0; i < 10; i++)
     {

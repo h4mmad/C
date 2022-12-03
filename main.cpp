@@ -51,29 +51,30 @@ void odd_even_sort(string *strings, int length_of_arr){
     {
         is_sorted = true;
 
+        //this loop is for even indexed elements
         for (int i = 0; i < length_of_arr-2; i+=2)
         {
             if (strings[i+1].compare(strings[i]) < 0)
             {
-                temp = strings[i];
-                strings[i] = strings[i+1];
-                strings[i+1] = temp;
+                swap(strings[i], strings[i+1]);
                 is_sorted = false;
             }
         }
+
+        //this loop is for odd indexed elements
         for (int i = 1; i < length_of_arr-2; i+=2)
         {
             if (strings[i+1].compare(strings[i]) < 0)
             {
-                temp = strings[i];
-                strings[i] = strings[i+1];
-                strings[i+1] = temp;
+                swap(strings[i], strings[i+1]);
                 is_sorted = false;
             }
         }
     }
     
 }
+
+
 
 void print_strings(string *strings, int amount, int no_of_strings){
     if (amount > no_of_strings){
@@ -84,3 +85,5 @@ void print_strings(string *strings, int amount, int no_of_strings){
         cout << strings[i] << endl;
     }
 }
+
+
