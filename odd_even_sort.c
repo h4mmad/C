@@ -5,39 +5,10 @@
 #include <stdbool.h>
 #define BUFER_SIZE 4096
 
-void odd_even_sort(char **strings, int no_of_strings){
-    char* temp;
-    bool is_sorted = false;
+//author - Mohammed Hammad 154434
 
-    while (!is_sorted)
-    {
-        is_sorted = true;
-
-        // this loop is for even indexed elements
-        for (int i = 0; i < no_of_strings-2; i+=2)
-        {
-            if(strcmp(strings[i], strings[i+1]) > 0){
-                temp = strings[i];
-                strings[i] = strings[i+1];
-                strings[i+1] = temp; 
-                is_sorted = false;
-            }  
-        }
-
-        // this loop is for odd indexed elements
-        for (int i = 1; i < no_of_strings-2; i+=2)
-        {
-            if(strcmp(strings[i], strings[i+1]) > 0){
-                temp = strings[i];
-                strings[i] = strings[i+1];
-                strings[i+1] = temp; 
-                is_sorted = false;
-            }  
-        }
-        
-    }
-
-}
+void odd_even_sort(char **strings, int no_of_strings);
+void swap(char** str1, char** str2);
 
 int main(){
     FILE* file = fopen("cpt316-assignment-2-strings.txt", "r");
@@ -85,7 +56,7 @@ int main(){
     double time_taken = ((double)t)/CLOCKS_PER_SEC;
     printf("odd even sort took %f milliseconds to execute \n", time_taken*1000);
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 100; i++)
     {
         printf("%s", strings[i]);
     }
@@ -95,4 +66,46 @@ int main(){
     for (int i = 0; i < no_of_strings; i++)
         free(strings[i]);
     free(strings);
+}
+
+void odd_even_sort(char **strings, int no_of_strings){
+    char* temp;
+    bool is_sorted = false;
+
+    while (!is_sorted)
+    {
+        is_sorted = true;
+
+        
+        // It compares the even indexed element with the next and swaps
+        // if the i'th string is larger than i+1, they swap
+        // that's why int i is intialised to 0
+        // i gets incremented by 2 values, therefore 0 wil become 2, 2 will become 4 and so on...
+        for (int i = 0; i < no_of_strings-2; i+=2)
+        {
+            if(strcmp(strings[i], strings[i+1]) > 0){
+                swap(&strings[i], &strings[i+1]);
+                is_sorted = false;
+            }  
+        }
+
+        // It compares the odd indexed element with the next and swaps
+        // if the i'th string is larger than i+1, they swap
+        // that's why int i is intialised to 1
+        // i gets incremented by 2 values, therefore 1 wil become 3, 3 will become 5 and so on...
+        for (int i = 1; i < no_of_strings-2; i+=2)
+        {
+            if(strcmp(strings[i], strings[i+1]) > 0){
+                swap(&strings[i], &strings[i+1]);
+                is_sorted = false;
+            }  
+        }
+        
+    }
+}
+
+void swap(char** str1, char** str2){
+    char *temp = *str1;
+    *str1 = *str2;
+    *str2 = temp; 
 }
