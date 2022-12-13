@@ -54,9 +54,9 @@ int main(){
 
     t = clock() - t;
     double time_taken = ((double)t)/CLOCKS_PER_SEC;
-    printf("odd even sort took %f milliseconds to execute \n", time_taken*1000);
+    printf("odd even sort took %f milliseconds to execute in C wihtout parallelism \n", time_taken*1000);
 
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 10; i++)
     {
         printf("%s", strings[i]);
     }

@@ -33,11 +33,11 @@ int main(){
     }
 
     auto start = high_resolution_clock::now();
-    my_odd_even_sort(strings, no_of_strings);
+    odd_even_sort(strings, no_of_strings);
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
 
-    cout << "time taken for odd even sort in C++ is " << duration.count() << " milliseconds"<< endl;
+    cout << "time taken for odd even sort using OpenMP is " << duration.count() << " milliseconds"<< endl;
     print_strings(strings, 10, no_of_strings);
     
     free(strings);
@@ -88,12 +88,13 @@ void my_odd_even_sort(string* strings, int no_of_strings){
         // if the i'th string is larger than i+1, they swap
         // that's why int i is intialised to 0
         // i gets incremented by 2 values, therefore 0 wil become 2, 2 will become 4 and so on...
-        #pragma omp parallel for private(temp, is_sorted)
+        #pragma omp parallel for private(is_sorted)
         for (int i = 0; i < no_of_strings-2; i+=2)
         {
             if(strings[i].compare(strings[i+1]) > 0){
                 swap(strings[i], strings[i+1]);
                 is_sorted = false;
+                // cout << "In first loop " << omp_get_thread_num() << endl;
             }  
         }
 
@@ -101,12 +102,14 @@ void my_odd_even_sort(string* strings, int no_of_strings){
         // if the i'th string is larger than i+1, they swap
         // that's why int i is intialised to 1
         // i gets incremented by 2 values, therefore 1 wil become 3, 3 will become 5 and so on...
-        #pragma omp parallel for private(temp, is_sorted)
+        #pragma omp parallel for private(is_sorted)
         for (int i = 1; i < no_of_strings-2; i+=2)
         {
             if(strings[i].compare(strings[i+1]) > 0){
                 swap(strings[i], strings[i+1]);
                 is_sorted = false;
+                // cout << "In second loop " <<omp_get_thread_num() << endl;
+
             }  
         }
         

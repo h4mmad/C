@@ -1,30 +1,14 @@
-const int WORD_LENGTH = 6;
-    // const int NO_OF_STRINGS = 5757; // number of words in the text file
+#include <stdio.h>
+#include <stdlib.h>
 
+int main(){
+    char* string = "hello";
+    char* strings[] = {"apple", "orang", "pinea"};
 
-    
-    // char buffer[BUFER_SIZE]; // this stores each string when read
-
-
-    // char **strings;
-    // strings = malloc(NO_OF_STRINGS * sizeof(char *)); // allocating memeory to store pointers to characters
-
-    // FILE* file = fopen("cpt316-assignment-1-strings.txt", "r");
-
-    // if(file == NULL){
-    //     printf("The file cannot be opened. \n");
-    // }
-    // else{
-    //     int index = 0;
-    //     while (fgets(buffer, WORD_LENGTH, file) != NULL)
-    //     {
-    //         strings[index] = malloc(30  *  30);
-    //         strcpy(strings[index], buffer);
-    //         index++;
-    //     }
-    // }
-
-
-    // printf("%d", strlen(strings[0]));
-
-    // fclose(file);
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 5; j++){
+            printf("%c", strings[i][j]);
+        }
+            printf("\n");
+    }
+}
